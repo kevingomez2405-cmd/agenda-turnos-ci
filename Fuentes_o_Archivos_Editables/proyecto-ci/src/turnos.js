@@ -23,7 +23,7 @@ export function validarTurno(turno) {
 // Dos turnos se cruzan si cada uno empieza antes de que el otro termine.
 // Si uno termina justo cuando empieza el otro, NO hay cruce.
 export function hayCruce(a, b) {
-  return a.inicio < b.fin && b.inicio < a.fin;
+  return a.inicio <= b.fin && b.inicio <= a.fin;
 }
 
 // Agrega un turno a la agenda. Lanza un error si es inválido o se cruza.
