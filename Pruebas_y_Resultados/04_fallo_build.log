@@ -1,0 +1,48 @@
+ESCENARIO: Fallo controlado 3: build (main apunta a archivo inexistente)
+RESULTADO ESPERADO: Lint, sintaxis y pruebas pasan; falla build con mensaje claro; código 1
+COMANDO: npm run ci
+NODE: v22.23.4
+COMMIT BASE: 7f18dc8
+==================================================
+
+> agenda-turnos-ci@1.0.0 ci
+> npm run lint && npm run sintaxis && npm run test && npm run build
+
+
+> agenda-turnos-ci@1.0.0 lint
+> node scripts/lint.mjs
+
+✅ Lint: sin problemas
+
+> agenda-turnos-ci@1.0.0 sintaxis
+> node scripts/sintaxis.mjs
+
+✅ Sintaxis: 8 archivos revisados sin errores
+
+> agenda-turnos-ci@1.0.0 test
+> node scripts/pruebas.mjs "tests/**/*.test.js"
+
+✔ un turno correcto no tiene errores (1.559899ms)
+✔ rechaza un turno sin cliente (0.419171ms)
+✔ rechaza un turno más corto que la duración mínima (0.122471ms)
+✔ detecta cruce entre dos turnos (1.217919ms)
+✔ turnos que se tocan en el borde no se cruzan (0.156346ms)
+✔ agendarTurno agrega el turno a la agenda (0.215304ms)
+✔ agendarTurno rechaza un turno que se cruza (0.350979ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 88.577841
+
+✅ Pruebas: 7 pruebas ejecutadas y aprobadas
+
+> agenda-turnos-ci@1.0.0 build
+> node scripts/build.mjs
+
+❌ Build: package.json dice que el archivo principal es "src/principal.js", pero ese archivo no existe
+==================================================
+CODIGO DE SALIDA: 1

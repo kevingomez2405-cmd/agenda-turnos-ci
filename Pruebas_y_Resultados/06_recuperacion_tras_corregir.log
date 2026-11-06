@@ -1,0 +1,48 @@
+ESCENARIO: Recuperación: se revirtieron los cambios
+RESULTADO ESPERADO: Todo vuelve a verde, código 0
+COMANDO: npm run ci
+NODE: v22.23.4
+COMMIT BASE: 7f18dc8
+==================================================
+
+> agenda-turnos-ci@1.0.0 ci
+> npm run lint && npm run sintaxis && npm run test && npm run build
+
+
+> agenda-turnos-ci@1.0.0 lint
+> node scripts/lint.mjs
+
+✅ Lint: sin problemas
+
+> agenda-turnos-ci@1.0.0 sintaxis
+> node scripts/sintaxis.mjs
+
+✅ Sintaxis: 8 archivos revisados sin errores
+
+> agenda-turnos-ci@1.0.0 test
+> node scripts/pruebas.mjs "tests/**/*.test.js"
+
+✔ un turno correcto no tiene errores (1.113249ms)
+✔ rechaza un turno sin cliente (0.293806ms)
+✔ rechaza un turno más corto que la duración mínima (0.108052ms)
+✔ detecta cruce entre dos turnos (1.152642ms)
+✔ turnos que se tocan en el borde no se cruzan (0.160677ms)
+✔ agendarTurno agrega el turno a la agenda (0.179905ms)
+✔ agendarTurno rechaza un turno que se cruza (0.409656ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 69.987245
+
+✅ Pruebas: 7 pruebas ejecutadas y aprobadas
+
+> agenda-turnos-ci@1.0.0 build
+> node scripts/build.mjs
+
+✅ Build: dist/ generado (versión 1.0.0, commit local)
+==================================================
+CODIGO DE SALIDA: 0

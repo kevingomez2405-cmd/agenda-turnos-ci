@@ -1,0 +1,37 @@
+ESCENARIO: Fallo extra: ruta de pruebas incorrecta (test/ en vez de tests/)
+RESULTADO ESPERADO: La guarda detecta 0 pruebas ejecutadas y falla; código 1
+COMANDO: npm run ci
+NODE: v22.23.4
+COMMIT BASE: 7f18dc8
+==================================================
+
+> agenda-turnos-ci@1.0.0 ci
+> npm run lint && npm run sintaxis && npm run test && npm run build
+
+
+> agenda-turnos-ci@1.0.0 lint
+> node scripts/lint.mjs
+
+✅ Lint: sin problemas
+
+> agenda-turnos-ci@1.0.0 sintaxis
+> node scripts/sintaxis.mjs
+
+✅ Sintaxis: 8 archivos revisados sin errores
+
+> agenda-turnos-ci@1.0.0 test
+> node scripts/pruebas.mjs "test/**/*.test.js"
+
+ℹ tests 0
+ℹ suites 0
+ℹ pass 0
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 10.732716
+
+❌ Pruebas: se ejecutaron 0 pruebas con el patrón "test/**/*.test.js".
+   Revise que la carpeta y el nombre de los archivos sean correctos.
+==================================================
+CODIGO DE SALIDA: 1

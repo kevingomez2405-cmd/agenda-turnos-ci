@@ -1,0 +1,19 @@
+{
+  "name": "agenda-turnos-ci",
+  "version": "1.0.0",
+  "description": "Proyecto de laboratorio (datos ficticios) para practicar integración continua",
+  "type": "module",
+  "main": "src/index.js",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "lint": "node scripts/lint.mjs",
+    "sintaxis": "node scripts/sintaxis.mjs",
+    "test": "node scripts/pruebas.mjs \"tests/**/*.test.js\"",
+    "build": "node scripts/build.mjs",
+    "ci": "npm run lint && npm run sintaxis && npm run test && npm run build"
+  },
+  "license": "UNLICENSED",
+  "private": true
+}

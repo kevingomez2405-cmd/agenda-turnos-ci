@@ -1,0 +1,19 @@
+ESCENARIO: Fallo controlado 1: lint (se agregó var)
+RESULTADO ESPERADO: Falla en lint con archivo y línea; no corre sintaxis, pruebas ni build; código 1
+COMANDO: npm run ci
+NODE: v22.23.4
+COMMIT BASE: 7f18dc8
+==================================================
+
+> agenda-turnos-ci@1.0.0 ci
+> npm run lint && npm run sintaxis && npm run test && npm run build
+
+
+> agenda-turnos-ci@1.0.0 lint
+> node scripts/lint.mjs
+
+src/turnos.js:45  [no-var]  Use const o let en lugar de var
+
+❌ Lint: 1 problema(s) encontrado(s)
+==================================================
+CODIGO DE SALIDA: 1

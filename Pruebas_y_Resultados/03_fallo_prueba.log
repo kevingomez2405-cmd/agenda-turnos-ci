@@ -1,0 +1,66 @@
+ESCENARIO: Fallo controlado 2: prueba (cambio < por <=)
+RESULTADO ESPERADO: Lint y sintaxis pasan; falla la prueba de borde; no corre build; código 1
+COMANDO: npm run ci
+NODE: v22.23.4
+COMMIT BASE: 7f18dc8
+==================================================
+
+> agenda-turnos-ci@1.0.0 ci
+> npm run lint && npm run sintaxis && npm run test && npm run build
+
+
+> agenda-turnos-ci@1.0.0 lint
+> node scripts/lint.mjs
+
+✅ Lint: sin problemas
+
+> agenda-turnos-ci@1.0.0 sintaxis
+> node scripts/sintaxis.mjs
+
+✅ Sintaxis: 8 archivos revisados sin errores
+
+> agenda-turnos-ci@1.0.0 test
+> node scripts/pruebas.mjs "tests/**/*.test.js"
+
+✔ un turno correcto no tiene errores (1.012682ms)
+✔ rechaza un turno sin cliente (0.328216ms)
+✔ rechaza un turno más corto que la duración mínima (0.11178ms)
+✔ detecta cruce entre dos turnos (1.189468ms)
+✖ turnos que se tocan en el borde no se cruzan (1.795729ms)
+✔ agendarTurno agrega el turno a la agenda (0.28024ms)
+✔ agendarTurno rechaza un turno que se cruza (0.438163ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 6
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 71.803765
+
+✖ failing tests:
+
+test at tests/turnos.test.js:27:1
+✖ turnos que se tocan en el borde no se cruzan (1.795729ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at TestContext.<anonymous> (file:///proyecto-ci/tests/turnos.test.js:29:10)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:744:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+❌ Pruebas: hay pruebas que fallaron (revise el detalle de arriba)
+==================================================
+CODIGO DE SALIDA: 1
