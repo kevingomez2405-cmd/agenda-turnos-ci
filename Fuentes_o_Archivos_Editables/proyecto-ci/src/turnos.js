@@ -41,3 +41,5 @@ export function agendarTurno(agenda, turno) {
 
   return [...agenda, turno];
 }
+
+var duracionVieja = 30;
