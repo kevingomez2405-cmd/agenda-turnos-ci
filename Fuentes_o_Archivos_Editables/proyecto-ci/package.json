@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Proyecto de laboratorio (datos ficticios) para practicar integración continua",
   "type": "module",
-  "main": "src/index.js",
+  "main": "src/principal.js",
   "engines": {
     "node": ">=22"
   },
